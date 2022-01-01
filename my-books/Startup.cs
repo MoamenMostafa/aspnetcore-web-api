@@ -34,10 +34,15 @@ namespace my_books
         {
 
             services.AddControllers();
+
             //Configure DBContext with SQL DB
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
+
             //Configure the Services
             services.AddTransient<BooksService>();
+            services.AddTransient<AuthorsService>();
+            services.AddTransient<PublishersService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "my_books_updated_title", Version = "v2" });
