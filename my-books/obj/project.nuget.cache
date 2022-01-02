@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "TNgk/0u9M1Qrj+Td4cY/bpYOK+aWOekDVuAfRH6ME3ibmxyXQILMlxFPyQpX8Ws/Yv/gcrM/GTNiCncvBbyqFw==",
+  "dgSpecHash": "uqxwFyA+aoSbMDgFJnt4aZIqV0yiruExzr6tPN2guZIStDtm6ivRkhZ7fscM6DYaRCt/uI4x++9rvadNV6z4Vg==",
   "success": true,
   "projectFilePath": "D:\\Mo2men\\My Study\\Courses\\The Complete Guide to ASP.NET Core (.NET 5) Web API\\Exercise\\my-books\\my-books\\my-books.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Momen Mostafa\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Momen Mostafa\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "C:\\Users\\Momen Mostafa\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Momen Mostafa\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Momen Mostafa\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
