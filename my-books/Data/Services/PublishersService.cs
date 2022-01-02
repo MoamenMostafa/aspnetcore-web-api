@@ -1,7 +1,9 @@
 ﻿using my_books.Data.Models;
+using my_books.Data.Paging;
 using my_books.Data.ViewModels;
 using my_books.Exceptions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -29,6 +31,37 @@ namespace my_books.Data.Services
             _context.SaveChanges();
             return _publisher;
         }
+
+        public List<Publisher> GetAllPublishers(string sortBy,string searchString,int? pageNumber)
+        {
+            var publishers = _context.Publishers.OrderBy(p => p.Name).ToList();
+
+            if(!string.IsNullOrEmpty(sortBy))
+            {
+                switch(sortBy)
+                {
+                    case "name_desc":
+                        publishers =  publishers.OrderByDescending(p => p.Name).ToList();
+                        break;
+
+                    default:
+                        break;
+
+                }
+            }
+
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                publishers = publishers.Where(p => p.Name.Contains(searchString,StringComparison.CurrentCultureIgnoreCase)).ToList();
+            }
+
+            //Paging
+            int pageSize = 5;
+            publishers = PaginatedList<Publisher>.Create(publishers.AsQueryable(), pageNumber ?? 1, pageSize);
+
+            return publishers;
+        }
+
 
         public Publisher GetPublisherById(int publisherId) => _context.Publishers.FirstOrDefault(p=>p.Id== publisherId);
 
