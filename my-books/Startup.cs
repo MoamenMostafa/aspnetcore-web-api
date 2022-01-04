@@ -44,6 +44,8 @@ namespace my_books
             services.AddTransient<BooksService>();
             services.AddTransient<AuthorsService>();
             services.AddTransient<PublishersService>();
+            services.AddTransient<LogsService>();
+
             //Versioning
             services.AddApiVersioning(config =>
             {
@@ -58,11 +60,13 @@ namespace my_books
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "my_books_updated_title", Version = "v2" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
+
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -78,7 +82,7 @@ namespace my_books
             app.UseAuthorization();
 
             //Exception Handling
-            app.ConfigureBuiltInExceptionHandler();
+            app.ConfigureBuiltInExceptionHandler(loggerFactory);
             //app.ConfigureCustomExceptionHandler();
 
             app.UseEndpoints(endpoints =>
